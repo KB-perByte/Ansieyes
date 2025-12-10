@@ -106,7 +106,7 @@ sudo npm install -g pm2
 ```bash
 # Clone your repository
 git clone https://github.com/KB-perByte/Ansieye.git
-cd your-repo
+cd Ansieye
 
 # Create virtual environment
 python3 -m venv venv
@@ -228,7 +228,7 @@ module.exports = {
       name: 'ansieyes',
       script: 'app.py',
       interpreter: 'python3',
-      cwd: '/home/ubuntu/your-repo',
+      cwd: '/home/ubuntu/Ansieye',
       env: {
         GEMINI_API_KEY: 'your_key',
         GITHUB_APP_ID: 'your_app_id',
@@ -256,7 +256,7 @@ module.exports = {
 pm2 install pm2-logrotate
 
 # Start application
-cd /home/ubuntu/your-repo
+cd /home/ubuntu/Ansieye
 source venv/bin/activate
 pm2 start app.py --name ansieyes --interpreter python3 --env production
 
@@ -286,14 +286,14 @@ After=network.target
 [Service]
 Type=simple
 User=ubuntu
-WorkingDirectory=/home/ubuntu/your-repo
-Environment="PATH=/home/ubuntu/your-repo/venv/bin"
-ExecStart=/home/ubuntu/your-repo/venv/bin/python app.py
+WorkingDirectory=/home/ubuntu/Ansieye
+Environment="PATH=/home/ubuntu/Ansieye/venv/bin"
+ExecStart=/home/ubuntu/Ansieye/venv/bin/python app.py
 Restart=always
 RestartSec=10
 
 # Environment variables
-EnvironmentFile=/home/ubuntu/your-repo/.env
+EnvironmentFile=/home/ubuntu/Ansieye/.env
 
 [Install]
 WantedBy=multi-user.target
@@ -340,7 +340,7 @@ nano ~/deploy.sh
 
 ```bash
 #!/bin/bash
-cd /home/ubuntu/your-repo
+cd /home/ubuntu/Ansieye
 git pull origin main
 source venv/bin/activate
 pip install -r requirements.txt
@@ -690,7 +690,7 @@ pm2 status
 sudo systemctl status ansieyes
 
 # Update application
-cd /home/ubuntu/your-repo
+cd /home/ubuntu/Ansieye
 git pull
 source venv/bin/activate
 pip install -r requirements.txt
